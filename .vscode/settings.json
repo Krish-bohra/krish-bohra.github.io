@@ -1,0 +1,5 @@
+{
+    "chat.mcp.assisted.nuget.enabled": true,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "explorer.fileNesting.enabled": true
+}

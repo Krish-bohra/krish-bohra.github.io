@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Krish Bohra - Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        /* Main Container */
+        .resume-container {
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+            height: 90vh;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Floating Download Button */
+        .download-corner {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-corner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+            background: linear-gradient(135deg, #0056b3, #004494);
+        }
+        
+        /* Top Controls Container */
+        .top-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 5px;
+            padding-right: 15px;
+            border-right: 2px solid #eee;
+        }
+        
+        .control-group:last-child {
+            border-right: none;
+        }
+        
+        .control-btn {
+            background: #f8f9fa;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.2s;
+        }
+        
+        .control-btn:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .control-btn:active {
+            transform: translateY(0);
+        }
+        
+        .zoom-display {
+            min-width: 60px;
+            height: 40px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #007bff;
+            font-size: 14px;
+            margin: 0 5px;
+            border: 2px solid #e9ecef;
+        }
+        
+        /* Resume Image Display */
+        .resume-image-container {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8f9fa;
+            overflow: auto;
+            padding: 20px;
+        }
+        
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        
+        .resume-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            cursor: grab;
+        }
+        
+        .resume-image:active {
+            cursor: grabbing;
+        }
+        
+        /* Footer Info */
+        .resume-footer {
+            padding: 15px;
+            text-align: center;
+            background: white;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resume-container {
+                height: 85vh;
+                border-radius: 8px;
+            }
+            
+            .top-controls {
+                top: 15px;
+                left: 15px;
+                padding: 8px;
+                flex-wrap: wrap;
+                max-width: 90%;
+            }
+            
+            .control-group {
+                padding-right: 10px;
+            }
+            
+            .control-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            
+            .zoom-display {
+                min-width: 50px;
+                height: 36px;
+                font-size: 13px;
+            }
+            
+            .download-corner {
+                top: 15px;
+                right: 15px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .resume-footer {
+                padding: 10px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Fullscreen styles */
+        :fullscreen .resume-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            border-radius: 0;
+        }
+        
+        :-webkit-full-screen .resume-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            border-radius: 0;
+        }
+        
+        :-moz-full-screen .resume-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="resume-container">
+        <!-- Floating Download Button -->
+        <button onclick="downloadResume()" class="download-corner">
+            <i class="fas fa-download"></i> Download Resume
+        </button>
+        
+        <!-- Top Controls (Zoom, Fullscreen, Print) -->
+        <div class="top-controls">
+            <!-- Zoom Controls -->
+            <div class="control-group">
+                <button class="control-btn" onclick="zoomOut()" title="Zoom Out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <div class="zoom-display" id="zoomLevel">100%</div>
+                <button class="control-btn" onclick="zoomIn()" title="Zoom In">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="control-btn" onclick="resetZoom()" title="Reset Zoom">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            
+            <!-- View Controls -->
+            <div class="control-group">
+                <button class="control-btn" onclick="rotateImage()" title="Rotate 90°">
+                    <i class="fas fa-redo"></i>
+                </button>
+                <button class="control-btn" onclick="toggleFullscreen()" title="Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="control-btn" onclick="printResume()" title="Print">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Resume Image Display -->
+        <div class="resume-image-container">
+            <!-- Loading Spinner -->
+            <div class="loading" id="loadingSpinner">
+                <div class="spinner"></div>
+            </div>
+            
+            <!-- Image Wrapper for zoom -->
+            <div class="image-wrapper" id="imageWrapper">
+                <!-- Actual Resume Image -->
+                <img src="WhatsApp Image 2025-12-24 at 3.06.58 PM.jpeg" 
+                     alt="Krish Bohra Resume" 
+                     class="resume-image" 
+                     id="resumeImage"
+                     onload="hideLoading()"
+                     onerror="showError()">
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="resume-footer">
+            <p><strong>KRISH BOHRA</strong> • Professional Resume • Click the download button to save</p>
+            <p style="margin-top: 5px; font-size: 12px; color: #888;">
+                Use mouse wheel to zoom • Drag to pan • Double-click to reset
+            </p>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Resume downloaded successfully!</span>
+    </div>
+
+    <script>
+        // DOM Elements
+        const resumeImage = document.getElementById('resumeImage');
+        const imageWrapper = document.getElementById('imageWrapper');
+        const zoomLevelDisplay = document.getElementById('zoomLevel');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const notification = document.getElementById('notification');
+        
+        // Variables
+        let zoomLevel = 1;
+        let rotation = 0;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+        
+        // Show loading spinner
+        function showLoading() {
+            loadingSpinner.style.display = 'block';
+        }
+        
+        // Hide loading spinner
+        function hideLoading() {
+            loadingSpinner.style.display = 'none';
+            updateZoomDisplay();
+        }
+        
+        // Handle image loading error
+        function showError() {
+            loadingSpinner.style.display = 'none';
+            alert('Error loading resume image. Please check the file path.\n\nMake sure "WhatsApp Image 2025-12-24 at 1.58.44 PM.jpeg" is in the same folder.');
+        }
+        
+        // Update zoom display
+        function updateZoomDisplay() {
+            zoomLevelDisplay.textContent = `${Math.round(zoomLevel * 100)}%`;
+            applyTransform();
+        }
+        
+        // Apply zoom and rotation transform
+        function applyTransform() {
+            imageWrapper.style.transform = `translate(${translateX}px, ${translateY}px) scale(${zoomLevel}) rotate(${rotation}deg)`;
+        }
+        
+        // Reset pan position
+        function resetPan() {
+            translateX = 0;
+            translateY = 0;
+            applyTransform();
+        }
+        
+        // Zoom functions
+        function zoomIn() {
+            zoomLevel = Math.min(zoomLevel + 0.25, 5); // Max 500%
+            updateZoomDisplay();
+        }
+        
+        function zoomOut() {
+            zoomLevel = Math.max(zoomLevel - 0.25, 0.25); // Min 25%
+            updateZoomDisplay();
+        }
+        
+        function resetZoom() {
+            zoomLevel = 1;
+            resetPan();
+            updateZoomDisplay();
+        }
+        
+        // Rotate image
+        function rotateImage() {
+            rotation = (rotation + 90) % 360;
+            applyTransform();
+        }
+        
+        // Fullscreen function
+        function toggleFullscreen() {
+            const container = document.querySelector('.resume-container');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.mozRequestFullScreen) { /* Firefox */
+                    container.mozRequestFullScreen();
+                } else if (container.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) { /* IE/Edge */
+                    container.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        // Print function
+        function printResume() {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Print Resume - Krish Bohra</title>
+                    <style>
+                        body { 
+                            margin: 0; 
+                            padding: 20px; 
+                            text-align: center; 
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                        }
+                        img { 
+                            max-width: 100%; 
+                            max-height: 95vh;
+                            object-fit: contain;
+                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                        }
+                        @media print {
+                            body { padding: 0; }
+                            img { box-shadow: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <img src="${resumeImage.src}" alt="Krish Bohra Resume">
+                    <script>
+                        window.onload = function() {
+                            setTimeout(() => {
+                                window.print();
+                                setTimeout(() => {
+                                    if (confirm('Close print window?')) {
+                                        window.close();
+                                    }
+                                }, 500);
+                            }, 500);
+                        }
+                    <\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
+        
+        // Main Download Function
+        function downloadResume() {
+            try {
+                showLoading();
+                
+                // Get the image source
+                const imageUrl = resumeImage.src;
+                
+                // Create download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = imageUrl;
+                downloadLink.download = 'Krish_Bohra_Professional_Resume.jpg';
+                
+                // Trigger download
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                
+                // Show success notification
+                showNotification('Resume downloaded successfully!');
+                
+            } catch (error) {
+                console.error('Download error:', error);
+                showNotification('Error downloading resume', 'error');
+            } finally {
+                setTimeout(hideLoading, 500);
+            }
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const icon = notification.querySelector('i');
+            const text = notification.querySelector('span');
+            
+            text.textContent = message;
+            
+            if (type === 'error') {
+                notification.style.background = '#dc3545';
+                icon.className = 'fas fa-exclamation-circle';
+            } else {
+                notification.style.background = '#28a745';
+                icon.className = 'fas fa-check-circle';
+            }
+            
+            notification.style.display = 'flex';
+            
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Mouse wheel zoom
+        imageWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            zoomLevel = Math.max(0.25, Math.min(5, zoomLevel + delta));
+            updateZoomDisplay();
+        });
+        
+        // Mouse drag to pan
+        imageWrapper.addEventListener('mousedown', (e) => {
+            if (zoomLevel > 1) {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                imageWrapper.style.cursor = 'grabbing';
+            }
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            applyTransform();
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            imageWrapper.style.cursor = 'grab';
+        });
+        
+        // Double-click to reset
+        imageWrapper.addEventListener('dblclick', (e) => {
+            if (e.target === resumeImage || e.target === imageWrapper) {
+                resetZoom();
+            }
+        });
+        
+        // Touch events for mobile
+        let touchStartDistance = 0;
+        
+        imageWrapper.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                touchStartDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+            }
+        });
+        
+        imageWrapper.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                const touchDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                const delta = (touchDistance - touchStartDistance) / 100;
+                zoomLevel = Math.max(0.25, Math.min(5, zoomLevel + delta));
+                touchStartDistance = touchDistance;
+                updateZoomDisplay();
+            }
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + S to download
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                downloadResume();
+            }
+            
+            // Plus/Minus for zoom
+            if (e.key === '+' || e.key === '=') {
+                e.preventDefault();
+                zoomIn();
+            }
+            
+            if (e.key === '-' || e.key === '_') {
+                e.preventDefault();
+                zoomOut();
+            }
+            
+            // R to rotate
+            if (e.key === 'r' || e.key === 'R') {
+                e.preventDefault();
+                rotateImage();
+            }
+            
+            // 0 to reset zoom
+            if (e.key === '0') {
+                e.preventDefault();
+                resetZoom();
+            }
+            
+            // F for fullscreen
+            if (e.key === 'f' || e.key === 'F') {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+            
+            // P for print
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                printResume();
+            }
+            
+            // Escape to exit fullscreen
+            if (e.key === 'Escape' && document.fullscreenElement) {
+                toggleFullscreen();
+            }
+        });
+        
+        // Initialize
+        showLoading();
+        
+        // Show instructions on load
+        window.onload = function() {
+            setTimeout(() => {
+                showNotification('Use mouse wheel to zoom • Drag to pan • Double-click to reset');
+            }, 1500);
+        };
+    </script>
+</body>
+</html>
