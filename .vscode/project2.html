@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DISPASO Energy Drink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Vidaloka&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./drink.css" />
+  </head>
+  <body>
+    <!-- Background Bubbles Effect -->
+    <div class="page-bubbles" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="top-bar">
+      <div class="logo-area">
+        <span class="logo-mark">DISPASO</span>
+        <span class="logo-icon"></span>
+        <span class="logo-sub">ENERGY</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#home" class="nav-link active">HOME</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#products" class="nav-link">PRODUCTS</a>
+      </nav>
+      <button type="button" class="btn-pill btn-buy" id="open-cart" aria-label="Open shopping cart">
+        🛒
+        <span class="cart-count-badge" id="header-cart-count">0</span>
+      </button>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero-section" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">DISPASO ENERGY DRINK</p>
+          <h1>
+            DISPASO<br />
+            ENERGY<br />
+            DRINK
+          </h1>
+          <p class="hero-text">
+            DISPASO Energy Drink fuels the bold and unstoppable. With an
+            electrifying boost and refreshing taste, it keeps you focused,
+            active, and powered all day—at work, in the gym, or late into the
+            night.
+            <span class="decorative-icons">⭐ ⚡</span>
+          </p>
+        </div>
+        <div class="hero-can">
+          <div class="can-glow"></div>
+          <div class="can-placeholder can-main" aria-label="Dispaso main can">
+            <!-- IMAGE PLACEHOLDER: Replace with your hero can image -->
+            <!-- Recommended: Blue DISPASO can with condensation and water splashes -->
+            <img 
+              src="C:\Users\KRISH BOHRA\OneDrive\Desktop\project new\drink .png" 
+              alt="Dispaso Energy Drink can" 
+              class="can-img" 
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section class="about-section" id="about">
+        <div class="about-content">
+          <div class="about-label-wrap">
+            <div class="about-label">ABOUT US:</div>
+          </div>
+          <div class="about-card">
+            <p>
+              DISPASO IS FOR THE BOLD MOVERS AND LATE-NIGHT GRINDERS. PACKED WITH AN ELECTRIFYING KICK AND REFRESHING TASTE, IT POWERS YOUR HUSTLE FROM DAY TO NIGHT.
+            </p>
+          </div>
+          <button type="button" class="btn-ghost" data-scroll="#products">GO NOW</button>
+        </div>
+        <div class="about-can">
+          <div class="can-glow small"></div>
+          <div class="can-placeholder can-side">
+            <!-- IMAGE PLACEHOLDER: Replace with your about-section can image -->
+            <!-- Recommended: Blue DISPASO can with condensation and water splashes -->
+            <img 
+              src="C:\Users\KRISH BOHRA\OneDrive\Desktop\project new\2 .png" 
+              alt="Dispaso can with splash" 
+              class="can-img" 
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS SECTION -->
+      <section class="products-section" id="products">
+        <div class="products-header">
+          <span class="label-pill">PRODUCT</span>
+        </div>
+        <div class="products-grid">
+          <!-- Product Card 1: Energy Rush (Blue) -->
+          <article
+            class="product-card"
+            data-id="energy-rush"
+            data-name="Dispaso Energy Rush"
+            data-price="499"
+          >
+            <div class="card-inner">
+              <div class="can-placeholder can-blue">
+                <!-- IMAGE PLACEHOLDER: Replace with blue Energy Rush can image -->
+                <!-- Recommended: Blue DISPASO can with condensation -->
+                <img 
+                  src="C:\Users\KRISH BOHRA\OneDrive\Desktop\project new\drink .png"
+                  alt="Dispaso Energy Rush can" 
+                  class="can-img" 
+                />
+              </div>
+              <div class="product-info">
+                <h3>ENERGY RUSH</h3>
+                <p class="flavor-note">ENERGY DRINK</p>
+              </div>
+              <div class="product-footer">
+                <span class="price">₹499</span>
+                <button type="button" class="icon-btn add-to-cart" aria-label="Add Energy Rush to cart">
+                  🛒
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 2: Cherry Burst (Red) -->
+          <article
+            class="product-card"
+            data-id="cherry-burst"
+            data-name="Dispaso Cherry Burst"
+            data-price="399"
+          >
+            <div class="card-inner">
+              <div class="can-placeholder can-red">
+                <!-- IMAGE PLACEHOLDER: Replace with red Cherry Burst can image -->
+                <!-- Recommended: Red DISPASO can with condensation, cherries and ice cubes around it -->
+                <img 
+                  src="C:\Users\KRISH BOHRA\OneDrive\Desktop\project new\2 .png" 
+                  alt="Dispaso Cherry Burst can" 
+                  class="can-img" 
+                />
+              </div>
+              <div class="product-info">
+                <h3>CHERRY BURST</h3>
+                <p class="flavor-note">ENERGY DRINK</p>
+              </div>
+              <div class="product-footer">
+                <span class="price">₹399</span>
+                <button type="button" class="icon-btn add-to-cart" aria-label="Add Cherry Burst to cart">
+                  🛒
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 3: Citrus Kick (Green) -->
+          <article
+            class="product-card"
+            data-id="citrus-kick"
+            data-name="Dispaso Citrus Kick"
+            data-price="599"
+          >
+            <div class="card-inner">
+              <div class="can-placeholder can-green">
+                <!-- IMAGE PLACEHOLDER: Replace with green Citrus Kick can image -->
+                <!-- Recommended: Green DISPASO can with condensation, lime/orange slices and ice cubes around it -->
+                <img 
+                  src="C:\Users\KRISH BOHRA\Downloads\Untitled design (2).png" 
+                  alt="Dispaso Citrus Kick can" 
+                  class="can-img" 
+                />
+              </div>
+              <div class="product-info">
+                <h3>CITRUS KICK</h3>
+                <p class="flavor-note">ENERGY DRINK</p>
+              </div>
+              <div class="product-footer">
+                <span class="price">₹599</span>
+                <button type="button" class="icon-btn add-to-cart" aria-label="Add Citrus Kick to cart">
+                  🛒
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- CART + PAYMENT OVERLAY -->
+    <div class="overlay" id="cart-overlay" aria-hidden="true">
+      <div class="overlay-backdrop" data-close="cart"></div>
+      <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <button type="button" class="overlay-close" data-close="cart" aria-label="Close cart">
+          ✕
+        </button>
+
+        <div class="overlay-tabs">
+          <button type="button" class="overlay-tab active" data-step="cart">Cart</button>
+          <button type="button" class="overlay-tab" data-step="payment">Payment</button>
+          <button type="button" class="overlay-tab" data-step="done">Done</button>
+        </div>
+
+        <!-- CART STEP -->
+        <section class="cart-step step-active" data-step-panel="cart">
+          <h2 id="cart-title">Your Cart</h2>
+          <div id="cart-empty">Your cart is feeling empty. Add a can to start!</div>
+          <ul class="cart-list" id="cart-list"></ul>
+          <div class="cart-summary">
+            <div>
+              <span>Items</span>
+              <span id="cart-items-count">0</span>
+            </div>
+            <div>
+              <span>Total</span>
+              <span id="cart-total">₹0</span>
+            </div>
+          </div>
+          <button type="button" class="btn-pill btn-primary" id="to-payment" disabled>
+            Continue to payment
+          </button>
+        </section>
+
+        <!-- PAYMENT STEP -->
+        <section class="cart-step" data-step-panel="payment">
+          <h2>Payment Details</h2>
+          
+          <!-- Payment Method Selection -->
+          <div class="payment-methods">
+            <h3>Select Payment Method</h3>
+            <div class="payment-options">
+              <button type="button" class="payment-method-btn" data-method="card" data-type="debit">
+                <span class="method-icon">💳</span>
+                <span>Debit Card</span>
+              </button>
+              <button type="button" class="payment-method-btn" data-method="card" data-type="credit">
+                <span class="method-icon">💳</span>
+                <span>Credit Card</span>
+              </button>
+              <button type="button" class="payment-method-btn" data-method="upi">
+                <span class="method-icon">📱</span>
+                <span>UPI</span>
+              </button>
+              <button type="button" class="payment-method-btn" data-method="qr">
+                <span class="method-icon">📲</span>
+                <span>QR Code</span>
+              </button>
+              <button type="button" class="payment-method-btn" data-method="paypal">
+                <span class="method-icon">🅿️</span>
+                <span>PayPal</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Payment Forms Container -->
+          <div class="payment-forms-container">
+            <!-- Card Payment Form (Debit/Credit) -->
+            <form id="card-payment-form" class="payment-form" data-payment-type="card">
+              <h3 id="card-form-title">Card Details</h3>
+              <div class="field-row">
+                <label>
+                  Full name
+                  <input type="text" id="pay-name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" id="pay-email" required />
+                </label>
+              </div>
+              <label>
+                Shipping address
+                <input type="text" id="pay-address" required />
+              </label>
+              <div class="field-row">
+                <label>
+                  Card number
+                  <input type="text" id="pay-card" maxlength="19" placeholder="1234 5678 9012 3456" required />
+                </label>
+                <label>
+                  Expiry
+                  <input type="text" id="pay-exp" maxlength="5" placeholder="MM/YY" required />
+                </label>
+                <label>
+                  CVV
+                  <input type="password" id="pay-cvv" maxlength="4" required />
+                </label>
+              </div>
+              <button type="submit" class="btn-pill btn-primary">
+                Pay &amp; confirm
+              </button>
+            </form>
+
+            <!-- UPI Payment Form -->
+            <form id="upi-payment-form" class="payment-form" data-payment-type="upi">
+              <h3>UPI Payment</h3>
+              <div class="field-row">
+                <label>
+                  Full name
+                  <input type="text" id="upi-name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" id="upi-email" required />
+                </label>
+              </div>
+              <label>
+                Shipping address
+                <input type="text" id="upi-address" required />
+              </label>
+              <label>
+                UPI ID
+                <input type="text" id="upi-id" placeholder="yourname@upi" required />
+              </label>
+              <button type="submit" class="btn-pill btn-primary">
+                Pay with UPI
+              </button>
+            </form>
+
+            <!-- QR Code Payment Form -->
+            <form id="qr-payment-form" class="payment-form" data-payment-type="qr">
+              <h3>QR Code Payment</h3>
+              <div class="field-row">
+                <label>
+                  Full name
+                  <input type="text" id="qr-name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" id="qr-email" required />
+                </label>
+              </div>
+              <label>
+                Shipping address
+                <input type="text" id="qr-address" required />
+              </label>
+              <div class="qr-code-display">
+                <p>Scan this QR code to complete payment</p>
+                <!-- IMAGE PLACEHOLDER: Replace with your QR code image -->
+                <div class="qr-placeholder">
+                  <img 
+                    src="C:\Users\KRISH BOHRA\OneDrive\Desktop\project new\qr.jpeg" 
+                    alt="Payment QR Code" 
+                    class="qr-code-img" 
+                  />
+                  <p class="qr-note">Scan with any UPI app</p>
+                </div>
+              </div>
+              <button type="submit" class="btn-pill btn-primary">
+                I have paid
+              </button>
+            </form>
+
+            <!-- PayPal Payment Form -->
+            <form id="paypal-payment-form" class="payment-form" data-payment-type="paypal">
+              <h3>PayPal Payment</h3>
+              <div class="field-row">
+                <label>
+                  Full name
+                  <input type="text" id="paypal-name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" id="paypal-email" required />
+                </label>
+              </div>
+              <label>
+                Shipping address
+                <input type="text" id="paypal-address" required />
+              </label>
+              <label>
+                PayPal Email
+                <input type="email" id="paypal-account" placeholder="your@paypal.com" required />
+              </label>
+              <button type="submit" class="btn-pill btn-primary">
+                Pay with PayPal
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- DONE STEP -->
+        <section class="cart-step" data-step-panel="done">
+          <div class="done-state">
+            <div class="tick-circle">✓</div>
+            <h2>Order confirmed!</h2>
+            <p>
+              Your Dispaso energy boost is on the way. A confirmation email has
+              been sent (demo only).
+            </p>
+            <button type="button" class="btn-pill btn-primary" data-close="cart">
+              Back to site
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <span>© <span id="year"></span> Dispaso Energy Drink</span>
+    </footer>
+
+    <script src="./profile.js"></script>
+  </body>
+</html>
